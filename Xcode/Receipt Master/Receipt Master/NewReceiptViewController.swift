@@ -10,14 +10,18 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class NewReceiptViewController: UIViewController, CLLocationManagerDelegate{
+class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet weak var cameraView: UIView!
     //Contain image from camera in this view later
     
+    @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     
+    //Location and camera.
     let locationManager = CLLocationManager()
+    var imagePicker: UIImagePickerController!
+
     
     //Fields to store entry info.
     var currentLocation:String?
@@ -33,6 +37,8 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     
+    // =============== Location ==================
+
     /**
     * Triggered when switch is toggled.
     */
@@ -62,6 +68,24 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate{
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         longitude = locValue.longitude
         latitude = locValue.latitude
+    }
+    
+    
+    
+    // =============== Camera ==================
+    
+    
+    @IBAction func takePhoto(_ sender: Any) {
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        photoView.image = info[.originalImage] as? UIImage
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {

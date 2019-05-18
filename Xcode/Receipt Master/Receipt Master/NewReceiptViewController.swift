@@ -12,7 +12,8 @@ class NewReceiptViewController: UIViewController {
     @IBOutlet weak var cameraView: UIView!
     //Contain image from camera in this view later
     
-    
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,8 @@ class NewReceiptViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
+        
+        //Save name, description, and location. 
         self.dismiss(animated: true, completion: nil)
     }
     

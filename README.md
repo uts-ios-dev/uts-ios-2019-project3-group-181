@@ -1,3 +1,3 @@
-# Project 3
+# Receipt Master (Name subject to change..?)
 
-Populate this README.md file with relevant information about your project.
+This application is designed to..........

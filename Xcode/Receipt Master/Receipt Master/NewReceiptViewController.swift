@@ -7,21 +7,75 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class NewReceiptViewController: UIViewController {
+class NewReceiptViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var cameraView: UIView!
     //Contain image from camera in this view later
     
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var descriptionTextField: UITextField!
     
+    let locationManager = CLLocationManager()
     
+    //Fields to store entry info.
+    var currentLocation:String?
+    var entryName:String?
+    var entryDescription:String?
+    var longitude:Double?
+    var latitude:Double?
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    
+    /**
+    * Triggered when switch is toggled.
+    */
+    @IBAction func useLocation(_ sender: UISwitch) {
+                
+        //To request location authorization always, use this line of code:
+        //  locationManager.requestAlwaysAuthorization()
+        
+        //Otherwise, to request location authorization when the app is in use:
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+        
+    }
+    
+   /**
+    * Used by locationManager to get the location.
+    */
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        
+        //Print location to console and save to fields.
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        longitude = locValue.longitude
+        latitude = locValue.latitude
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
+        
+        //Save name, description, and location.
+        entryName = nameTextField.text!
+        entryDescription = descriptionTextField.text!
+        
         self.dismiss(animated: true, completion: nil)
+        
+        print(entryName)
+        print(entryDescription)
+        print(longitude)
+        print(latitude)
     }
     
     /*

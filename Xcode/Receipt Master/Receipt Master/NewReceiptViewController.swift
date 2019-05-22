@@ -10,6 +10,9 @@ import UIKit
 import MapKit
 import CoreLocation
 
+/**
+ * Location code derived from https://www.zerotoappstore.com/how-to-get-current-location-in-swift.html
+ */
 class NewReceiptViewController: UIViewController, CLLocationManagerDelegate{
     @IBOutlet weak var cameraView: UIView!
     //Contain image from camera in this view later

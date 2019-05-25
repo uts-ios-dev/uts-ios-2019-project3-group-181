@@ -80,10 +80,13 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         
         let location = CLLocation(latitude: latitude!, longitude: longitude!)
         
+        
+        // Some code adapted from https://stackoverflow.com/questions/41358423/swift-generate-an-address-format-from-reverse-geocoding
         geocoder.reverseGeocodeLocation(location, completionHandler: {(placemarks, error) in
             if (error != nil) {
                 print("Error in reverseGeocode")
             }
+            
             
             let placemark = placemarks! as [CLPlacemark]
             if placemark.count > 0 {

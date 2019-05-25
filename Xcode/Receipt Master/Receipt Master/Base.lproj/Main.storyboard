@@ -209,11 +209,18 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="No location selected." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIE-iH-FVH">
+                                <rect key="frame" x="126" y="710" width="162" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="crT-84-zAG" firstAttribute="centerX" secondItem="1Gq-nB-c7Y" secondAttribute="centerX" id="2qT-og-aQr"/>
                             <constraint firstItem="Qfa-z9-Lsw" firstAttribute="bottom" secondItem="4Bf-KT-xer" secondAttribute="bottom" constant="49.5" id="PlS-9P-JeN"/>
+                            <constraint firstItem="4Bf-KT-xer" firstAttribute="top" secondItem="TIE-iH-FVH" secondAttribute="bottom" constant="21.5" id="YiV-ZC-rNA"/>
                             <constraint firstItem="crT-84-zAG" firstAttribute="top" secondItem="Qfa-z9-Lsw" secondAttribute="top" constant="60" id="iBv-0Z-gyx"/>
                             <constraint firstItem="4Bf-KT-xer" firstAttribute="centerX" secondItem="1Gq-nB-c7Y" secondAttribute="centerX" id="t9s-oL-kyF"/>
                         </constraints>
@@ -221,6 +228,7 @@
                     </view>
                     <connections>
                         <outlet property="descriptionTextField" destination="KD6-wd-vMb" id="UD8-uC-lFB"/>
+                        <outlet property="locationLabel" destination="TIE-iH-FVH" id="oQS-hB-eh1"/>
                         <outlet property="nameTextField" destination="zft-83-zaY" id="fVc-z1-hOQ"/>
                     </connections>
                 </viewController>

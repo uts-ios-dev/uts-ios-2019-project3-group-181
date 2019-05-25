@@ -10,17 +10,21 @@ import UIKit
 import MapKit
 import CoreLocation
 
-/**
- * Location code derived from https://www.zerotoappstore.com/how-to-get-current-location-in-swift.html
- */
-class NewReceiptViewController: UIViewController, CLLocationManagerDelegate{
+class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet weak var cameraView: UIView!
     //Contain image from camera in this view later
     
+    @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
+    @IBOutlet weak var locationLabel: UILabel!
     
+    //Location and camera.
     let locationManager = CLLocationManager()
+    var imagePicker: UIImagePickerController!
+    let geocoder = CLGeocoder()
+
+    
     
     //Fields to store entry info.
     var currentLocation:String?
@@ -29,18 +33,26 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate{
     var longitude:Double?
     var latitude:Double?
     
-
+    var streetNum: String?
+    var streetName: String?
+    var locality :String?
+    var administrativeArea :String?
+    var country :String?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
     }
     
     
+    // =============== Location ==================
+    
     /**
-    * Triggered when switch is toggled.
-    */
+     * Triggered when switch is toggled.
+     */
     @IBAction func useLocation(_ sender: UISwitch) {
-                
+        
         //To request location authorization always, use this line of code:
         //  locationManager.requestAlwaysAuthorization()
         
@@ -55,9 +67,9 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate{
         
     }
     
-   /**
-    * Used by locationManager to get the location.
-    */
+    /**
+     * Used by locationManager to get the location.
+     */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         
@@ -65,6 +77,46 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate{
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         longitude = locValue.longitude
         latitude = locValue.latitude
+        
+        let location = CLLocation(latitude: latitude!, longitude: longitude!)
+        
+        geocoder.reverseGeocodeLocation(location, completionHandler: {(placemarks, error) in
+            if (error != nil) {
+                print("Error in reverseGeocode")
+            }
+            
+            let placemark = placemarks! as [CLPlacemark]
+            if placemark.count > 0 {
+                let placemark = placemarks![0]
+                self.locality = placemark.locality!
+                self.administrativeArea = placemark.administrativeArea!
+                self.country = placemark.country!
+                self.streetName = placemark.thoroughfare!
+                self.streetNum = placemark.subThoroughfare!
+                print(self.locality! + self.administrativeArea! + self.country!)
+                self.locationLabel.text =  self.streetNum! +  " "  + self.streetName! +  ", "  +  self.locality! + ", "  + self.country!
+            }
+        })
+        
+    }
+
+    
+
+    
+    // =============== Camera ==================
+    
+    
+    @IBAction func takePhoto(_ sender: Any) {
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        imagePicker.dismiss(animated: true, completion: nil)
+        photoView.image = info[.originalImage] as? UIImage
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
@@ -82,13 +134,14 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate{
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
+

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SavedReceiptsViewController: UIViewController, UITableViewDataSource {
     @IBOutlet weak var tableView: UITableView!

@@ -13,6 +13,16 @@ class Receipt : Object{
     @objc dynamic var creationDate = Date()
     
     //  One-to-many for relationships for Receipt to Category and Store.
-    @objc dynamic var category: Category!
-    @objc dynamic var store: Store!
+    //  @objc dynamic var category: Category!
+    //  @objc dynamic var store: Store!
+    
+    //  Are these the correct field names we want?
+    @objc dynamic var  entryName:String = ""
+    @objc dynamic var  entryDescription:String = ""
+    @objc dynamic var  longitude:Double = 0.0
+    @objc dynamic var  latitude:Double = 0.0
+    
+    #warning("Uncomment Receipt fields above.")
+    
+    
 }

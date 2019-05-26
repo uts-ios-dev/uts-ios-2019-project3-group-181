@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import RealmSwift
 
 class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     @IBOutlet weak var cameraView: UIView!
@@ -18,6 +19,9 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var locationLabel: UILabel!
+    
+    var newReceipt : Receipt!
+    var realm : Realm!
     
     //Location and camera.
     let locationManager = CLLocationManager()
@@ -43,6 +47,8 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
     
@@ -125,15 +131,26 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
     @IBAction func doneButtonPressed(_ sender: Any) {
         
         //Save name, description, and location.
-        entryName = nameTextField.text!
-        entryDescription = descriptionTextField.text!
+        //entryName = nameTextField.text!
+        //entryDescription = descriptionTextField.text!
+        newReceipt = Receipt()
+        newReceipt.entryName = nameTextField.text!
+        newReceipt.entryDescription = descriptionTextField.text!
+        
+        #warning("Still need to handle latitude and longitude.")
+        
+        do {
+            realm = try Realm()
+            
+            try realm.write() {
+                realm.add(newReceipt)
+            }
+        }
+        catch let error as NSError {
+            print(error)
+        }
         
         self.dismiss(animated: true, completion: nil)
-        
-        print(entryName)
-        print(entryDescription)
-        print(longitude)
-        print(latitude)
     }
     
     /*

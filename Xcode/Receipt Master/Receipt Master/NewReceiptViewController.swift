@@ -136,6 +136,8 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         newReceipt = Receipt()
         newReceipt.entryName = nameTextField.text!
         newReceipt.entryDescription = descriptionTextField.text!
+        newReceipt.latitude = latitude!
+        newReceipt.longitude = longitude!
         
         #warning("Still need to handle latitude and longitude.")
         

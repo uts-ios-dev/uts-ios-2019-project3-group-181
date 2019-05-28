@@ -10,24 +10,46 @@ import UIKit
 import RealmSwift
 
 class SavedReceiptsViewController: UIViewController, UITableViewDataSource {
+    
+    var receipts : Results<Receipt>!
+    
     @IBOutlet weak var tableView: UITableView!
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        #warning("Fill this up with proper data")
-        return 0
+        return receipts.count
         //P.s. Read up on how to use UITableView. Cheers.
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        #warning("Fill this up with proper data")
-        return UITableViewCell.init()
-        //P.s. Read up on how to use UITableView. Cheers.
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")!
+        
+        let text = receipts[indexPath.row]
+        
+        cell.textLabel?.text = text.entryName
+        
+        return cell
+        
     }
     
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+        
+        #warning("Do we want to use sections?")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        do{
+            receipts = try Realm().objects(Receipt.self)
+        }
+        catch (let error as NSError){
+            print(error)
+        }
+        
+        //  We need to tell the tableview where its source is.
+        tableView.dataSource = self
 
         // Do any additional setup after loading the view.
     }

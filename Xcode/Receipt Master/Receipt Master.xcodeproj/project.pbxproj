@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -18,6 +18,10 @@
 		3D9A9724228EC0140076AEDD /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A9723228EC0130076AEDD /* background.jpg */; };
 		3D9A9726228EC55F0076AEDD /* NewReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9A9725228EC55F0076AEDD /* NewReceiptViewController.swift */; };
 		3D9A9728228EC5750076AEDD /* SavedReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9A9727228EC5750076AEDD /* SavedReceiptsViewController.swift */; };
+		A2F13463229981B0001E77C2 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F13462229981B0001E77C2 /* Receipt.swift */; };
+		A2F13465229982DF001E77C2 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F13464229982DF001E77C2 /* Store.swift */; };
+		A2F13467229982EF001E77C2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F13466229982EF001E77C2 /* Category.swift */; };
+		D24A42D40AE4A4D90476FAE8 /* Pods_Receipt_Master.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9009BABBABE44D91ABD456 /* Pods_Receipt_Master.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,12 @@
 		3D9A9723228EC0130076AEDD /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
 		3D9A9725228EC55F0076AEDD /* NewReceiptViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewReceiptViewController.swift; sourceTree = "<group>"; };
 		3D9A9727228EC5750076AEDD /* SavedReceiptsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedReceiptsViewController.swift; sourceTree = "<group>"; };
+		6BA5BFB2040E89111245F86B /* Pods-Receipt Master.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Receipt Master.debug.xcconfig"; path = "Target Support Files/Pods-Receipt Master/Pods-Receipt Master.debug.xcconfig"; sourceTree = "<group>"; };
+		9E9009BABBABE44D91ABD456 /* Pods_Receipt_Master.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Receipt_Master.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2F13462229981B0001E77C2 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
+		A2F13464229982DF001E77C2 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		A2F13466229982EF001E77C2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		CDBDC077A93DC38AC667A02F /* Pods-Receipt Master.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Receipt Master.release.xcconfig"; path = "Target Support Files/Pods-Receipt Master/Pods-Receipt Master.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D24A42D40AE4A4D90476FAE8 /* Pods_Receipt_Master.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +100,8 @@
 				3D9A9709228EBFEB0076AEDD /* Receipt MasterTests */,
 				3D9A9714228EBFEB0076AEDD /* Receipt MasterUITests */,
 				3D9A96F0228EBFEA0076AEDD /* Products */,
+				B32BCF9499B7F83B684D24FB /* Pods */,
+				F72D08C6FAA1F75D79383FF5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -115,6 +128,9 @@
 				3D9A96F9228EBFEA0076AEDD /* Receipt_Master.xcdatamodeld */,
 				3D9A9725228EC55F0076AEDD /* NewReceiptViewController.swift */,
 				3D9A9727228EC5750076AEDD /* SavedReceiptsViewController.swift */,
+				A2F13462229981B0001E77C2 /* Receipt.swift */,
+				A2F13464229982DF001E77C2 /* Store.swift */,
+				A2F13466229982EF001E77C2 /* Category.swift */,
 			);
 			path = "Receipt Master";
 			sourceTree = "<group>";
@@ -137,6 +153,24 @@
 			path = "Receipt MasterUITests";
 			sourceTree = "<group>";
 		};
+		B32BCF9499B7F83B684D24FB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6BA5BFB2040E89111245F86B /* Pods-Receipt Master.debug.xcconfig */,
+				CDBDC077A93DC38AC667A02F /* Pods-Receipt Master.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../../Pods;
+			sourceTree = "<group>";
+		};
+		F72D08C6FAA1F75D79383FF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9E9009BABBABE44D91ABD456 /* Pods_Receipt_Master.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,9 +178,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3D9A971A228EBFEB0076AEDD /* Build configuration list for PBXNativeTarget "Receipt Master" */;
 			buildPhases = (
+				5CE93C5519F4667A44F00566 /* [CP] Check Pods Manifest.lock */,
 				3D9A96EB228EBFEA0076AEDD /* Sources */,
 				3D9A96EC228EBFEA0076AEDD /* Frameworks */,
 				3D9A96ED228EBFEA0076AEDD /* Resources */,
+				11C9D604DCB8CD78DFDCC147 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -264,16 +300,61 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		11C9D604DCB8CD78DFDCC147 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Receipt Master/Pods-Receipt Master-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Receipt Master/Pods-Receipt Master-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Receipt Master/Pods-Receipt Master-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5CE93C5519F4667A44F00566 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Receipt Master-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		3D9A96EB228EBFEA0076AEDD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2F13465229982DF001E77C2 /* Store.swift in Sources */,
+				A2F13463229981B0001E77C2 /* Receipt.swift in Sources */,
 				3D9A9728228EC5750076AEDD /* SavedReceiptsViewController.swift in Sources */,
 				3D9A96FB228EBFEA0076AEDD /* Receipt_Master.xcdatamodeld in Sources */,
 				3D9A96F5228EBFEA0076AEDD /* ViewController.swift in Sources */,
 				3D9A9726228EC55F0076AEDD /* NewReceiptViewController.swift in Sources */,
 				3D9A96F3228EBFEA0076AEDD /* AppDelegate.swift in Sources */,
+				A2F13467229982EF001E77C2 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,9 +527,11 @@
 		};
 		3D9A971B228EBFEB0076AEDD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6BA5BFB2040E89111245F86B /* Pods-Receipt Master.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FTG34P35M7;
 				INFOPLIST_FILE = "Receipt Master/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -463,9 +546,11 @@
 		};
 		3D9A971C228EBFEB0076AEDD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CDBDC077A93DC38AC667A02F /* Pods-Receipt Master.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FTG34P35M7;
 				INFOPLIST_FILE = "Receipt Master/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

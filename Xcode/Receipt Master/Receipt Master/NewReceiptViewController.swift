@@ -12,9 +12,6 @@ import CoreLocation
 import RealmSwift
 
 class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
-    @IBOutlet weak var cameraView: UIView!
-    //Contain image from camera in this view later
-    
     @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
@@ -155,6 +152,13 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         self.dismiss(animated: true, completion: nil)
     }
     
+    @IBAction func chooseFromGalleryButtonPressed(_ sender: Any) {
+        imagePicker =  UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true, completion: nil)
+    }
     /*
      // MARK: - Navigation
      

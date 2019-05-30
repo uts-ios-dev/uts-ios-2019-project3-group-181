@@ -134,8 +134,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="4Kf-em-rMH" id="xgO-7M-Nn1"/>
-                                    <outlet property="delegate" destination="4Kf-em-rMH" id="xdL-le-JOo"/>
+                                    <outlet property="dataSource" destination="4Kf-em-rMH" id="Wwy-oi-3fQ"/>
+                                    <outlet property="delegate" destination="4Kf-em-rMH" id="iA6-ix-39Z"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kJm-Bl-pLy">
@@ -160,9 +160,6 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jCf-fO-c6P"/>
                     </view>
-                    <connections>
-                        <outlet property="tableView" destination="Vae-4c-TTd" id="fK2-lR-Aw6"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkL-4s-cba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

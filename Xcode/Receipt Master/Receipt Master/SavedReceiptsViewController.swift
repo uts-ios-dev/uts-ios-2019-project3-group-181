@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class SavedReceiptsViewController: UIViewController, UITableViewDataSource {
+class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var receipts : Results<Receipt>!
     
@@ -32,11 +32,26 @@ class SavedReceiptsViewController: UIViewController, UITableViewDataSource {
         
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        Stack Overflow- UIImage Alert View
+        let alert = UIAlertController(title: receipts[indexPath.row].entryName, message: receipts[indexPath.row].entryDescription, preferredStyle: .alert)
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+//        let imgTitle = UIImage(named:"imgTitle.png")
+//        let imgViewTitle = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
+//        imgViewTitle.image = imgTitle
+//        alert.view.addSubview(imgViewTitle)
+        alert.addAction(action)
         
-        #warning("Do we want to use sections?")
+        self.present(alert, animated: true, completion: nil)
     }
+    
+//    func numberOfSections(in tableView: UITableView) -> Int {
+//        return 1
+//
+//        #warning("Do we want to use sections?")
+//        Nah
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +64,7 @@ class SavedReceiptsViewController: UIViewController, UITableViewDataSource {
         }
         
         //  We need to tell the tableview where its source is.
-        tableView.dataSource = self
+//        tableView.dataSource = self
 
         // Do any additional setup after loading the view.
     }

@@ -120,8 +120,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vae-4c-TTd">
-                                <rect key="frame" x="20" y="196" width="374" height="526"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Vae-4c-TTd">
+                                <rect key="frame" x="20" y="196" width="374" height="235"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellReuseIdentifier" id="jnH-WZ-QTq">
@@ -146,20 +146,30 @@
                                     <action selector="doneButtonPressed:" destination="4Kf-em-rMH" eventType="touchUpInside" id="Lnw-Nd-GhE"/>
                                 </connections>
                             </button>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="dZi-y3-6Wt">
+                                <rect key="frame" x="20" y="469" width="374" height="265"/>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="j54-bF-s5q" firstAttribute="top" secondItem="jCf-fO-c6P" secondAttribute="top" constant="60" id="2go-Kh-Cn4"/>
                             <constraint firstItem="j54-bF-s5q" firstAttribute="centerX" secondItem="Bus-7W-61T" secondAttribute="centerX" id="47E-bX-6mZ"/>
+                            <constraint firstItem="kJm-Bl-pLy" firstAttribute="top" secondItem="dZi-y3-6Wt" secondAttribute="bottom" constant="8" id="9B2-Oy-dmG"/>
+                            <constraint firstItem="dZi-y3-6Wt" firstAttribute="leading" secondItem="jCf-fO-c6P" secondAttribute="leading" constant="20" id="As6-r0-EpT"/>
+                            <constraint firstItem="dZi-y3-6Wt" firstAttribute="top" secondItem="Vae-4c-TTd" secondAttribute="bottom" constant="38" id="Jhf-gv-LTN"/>
                             <constraint firstItem="kJm-Bl-pLy" firstAttribute="centerX" secondItem="Bus-7W-61T" secondAttribute="centerX" id="OBx-GC-bNL"/>
                             <constraint firstItem="jCf-fO-c6P" firstAttribute="trailing" secondItem="Vae-4c-TTd" secondAttribute="trailing" constant="20" id="Ydh-qM-m6W"/>
                             <constraint firstItem="Vae-4c-TTd" firstAttribute="top" secondItem="j54-bF-s5q" secondAttribute="bottom" constant="20" id="ayw-DM-dxB"/>
                             <constraint firstItem="jCf-fO-c6P" firstAttribute="bottom" secondItem="kJm-Bl-pLy" secondAttribute="bottom" constant="60" id="bea-BK-Z1d"/>
                             <constraint firstItem="Vae-4c-TTd" firstAttribute="leading" secondItem="jCf-fO-c6P" secondAttribute="leading" constant="20" id="oIU-Nk-bJV"/>
                             <constraint firstItem="kJm-Bl-pLy" firstAttribute="top" secondItem="Vae-4c-TTd" secondAttribute="bottom" constant="20" id="qK3-5M-UAR"/>
+                            <constraint firstItem="jCf-fO-c6P" firstAttribute="trailing" secondItem="dZi-y3-6Wt" secondAttribute="trailing" constant="20" id="vQh-Al-8o7"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jCf-fO-c6P"/>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="dZi-y3-6Wt" id="bGD-lh-vwa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkL-4s-cba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

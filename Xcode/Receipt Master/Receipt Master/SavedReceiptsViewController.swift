@@ -77,7 +77,7 @@ class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITabl
 //    }
     
     //==============Map stuff========================
-    
+    // Map code adapted from tutorial on: https://www.hackingwithswift.com/example-code/location/how-to-add-annotations-to-mkmapview-using-mkpointannotation-and-mkpinannotationview
     
     /**
     * Populate the mapView with markers.

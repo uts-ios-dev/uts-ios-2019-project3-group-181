@@ -139,6 +139,10 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
             newReceipt.longitude = long
         }
         
+        if let locationName = self.locationLabel.text{
+            newReceipt.locationName = locationName
+        }
+        
         do {
             realm = try Realm()
             

@@ -22,4 +22,5 @@ class Receipt : Object{
     @objc dynamic var  entryDescription:String = ""
     @objc dynamic var  longitude:Double = 0.0
     @objc dynamic var  latitude:Double = 0.0
+    @objc dynamic var locationName:String = ""
 }

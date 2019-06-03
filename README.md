@@ -1,3 +1,5 @@
-# Receipt Master (Name subject to change..?)
+# Receipt Master 
 
-This application is designed to..........
+This application has been designed for the subject 41889 Application Development in the iOS Environment for Autumn 2019.
+
+

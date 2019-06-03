@@ -8,12 +8,35 @@
 
 import UIKit
 import RealmSwift
+import MapKit
+
 
 class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var receipts : Results<Receipt>!
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var mapView: MKMapView!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        do{
+            receipts = try Realm().objects(Receipt.self)
+        }
+        catch (let error as NSError){
+            print(error)
+        }
+        
+        //  We need to tell the tableview where its source is.
+        //        tableView.dataSource = self
+        
+        // Do any additional setup after loading the view.
+        
+        populateMap()
+        
+    }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -52,22 +75,49 @@ class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITabl
 //        #warning("Do we want to use sections?")
 //        Nah
 //    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    
+    //==============Map stuff========================
+    
+    
+    /**
+    * Populate the mapView with markers.
+    */
+    func populateMap() {
+        //Remove existing markers.
+        mapView.removeAnnotations(mapView.annotations)
         
-        do{
-            receipts = try Realm().objects(Receipt.self)
+        // Create annotations for each coordinate/entry.
+        for receipt in receipts {
+            let coord = CLLocationCoordinate2D(
+                latitude: receipt.latitude,
+                longitude: receipt.longitude);
+            
+            let receiptAnnotation = MKPointAnnotation()
+            receiptAnnotation.title = receipt.entryName
+            receiptAnnotation.subtitle = receipt.entryDescription
+            receiptAnnotation.coordinate = coord
+            
+            mapView.addAnnotation(receiptAnnotation)
         }
-        catch (let error as NSError){
-            print(error)
-        }
-        
-        //  We need to tell the tableview where its source is.
-//        tableView.dataSource = self
-
-        // Do any additional setup after loading the view.
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is MKPointAnnotation else { return nil }
+        
+        let identifier = "Annotation"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView!.canShowCallout = true
+        } else {
+            annotationView!.annotation = annotation
+        }
+        
+        return annotationView
+    }
+
+ 
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)

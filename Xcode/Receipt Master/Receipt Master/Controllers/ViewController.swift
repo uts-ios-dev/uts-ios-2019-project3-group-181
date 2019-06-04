@@ -9,14 +9,20 @@
 import UIKit
 import RealmSwift
 
+
+/*
+ * Entry VC.
+ */
 class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    //  The following code snippets are just for debug purpose
-    //  and allow us to clear the Realm database file from the device.
+    /**
+     * The following code snippets are just for debug purpose
+     * and allow us to clear the Realm database file from the device.
+     */
     @IBAction func resetDatabaseButtonPressed(_ sender: Any) {
         print("Cleaning database")
         do {

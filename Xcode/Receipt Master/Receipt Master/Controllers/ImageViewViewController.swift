@@ -8,24 +8,36 @@
 
 import Foundation
 import UIKit
+
+/**
+ * VC for displaying selected Receipt
+ */
 class ImageViewViewController: UIViewController {
+    
+    //Fields to display.
     var filePath:String = ""
     var name:String = ""
     var desc:String = ""
     
+    // UI Labels
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet var imageView: UIImageView!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Get image file path so it can be displayed.
         let file = URL.init(string: filePath)
         let img = UIImage.init(contentsOfFile: file!.path)!
+        
+        //Set the UI Components with values to display tothe user.
         self.imageView.image = img
         self.nameLbl.text = self.name
         self.descLbl.text = self.desc
         
-        // Do any additional setup after loading the view.
+
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)

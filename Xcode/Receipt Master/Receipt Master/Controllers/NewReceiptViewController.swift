@@ -11,17 +11,23 @@ import MapKit
 import CoreLocation
 import RealmSwift
 
+/**
+ * VC for new receipt entry submission.
+ */
 class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    //Fields for UI components.
     @IBOutlet weak var photoView: UIImageView!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     
+    //DB model and framework.
     var newReceipt : Receipt!
     var realm : Realm!
     
-    //Location and camera.
+    //Location and image picker.
     let locationManager = CLLocationManager()
     var imagePicker: UIImagePickerController!
     let geocoder = CLGeocoder()
@@ -31,9 +37,9 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
     //Fields to store entry info.
     var longitude:Double?
     var latitude:Double?
-    
     var photoFileName: String?
     
+    //Fields for location.
     var streetNum: String?
     var streetName: String?
     var locality :String?
@@ -57,12 +63,12 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
      */
     @IBAction func useLocation(_ sender: UISwitch) {
         
-        //To request location authorization always, use this line of code:
-        //  locationManager.requestAlwaysAuthorization()
+
         
-        //Otherwise, to request location authorization when the app is in use:
+        //Request location authorization when the app used for the first time.
         locationManager.requestWhenInUseAuthorization()
         
+        //Start receiving location info if location is enabled.
         if CLLocationManager.locationServicesEnabled() {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
@@ -72,7 +78,7 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
     }
     
     /**
-     * Used by locationManager to get the location.
+     * Used by locationManager to get the location. Also saves location names to fields.
      */
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
@@ -85,13 +91,14 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         let location = CLLocation(latitude: latitude!, longitude: longitude!)
         
         
-        // Some code adapted from https://stackoverflow.com/questions/41358423/swift-generate-an-address-format-from-reverse-geocoding
+        // Get the reverseGeolocation details.
+        // Some code adapted from: https://stackoverflow.com/questions/41358423/swift-generate-an-address-format-from-reverse-geocoding
         geocoder.reverseGeocodeLocation(location, completionHandler: {(placemarks, error) in
             if (error != nil) {
                 print("Error in reverseGeocode")
             }
             
-            
+            //Get location names, and store them in fields/label to be sent to database.
             let placemark = placemarks! as [CLPlacemark]
             if placemark.count > 0 {
                 let placemark = placemarks![0]
@@ -110,9 +117,11 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
     
 
     
-    // =============== Camera ==================
+    // =============== Image Picker ==================
     
-    
+    /*
+     * Initiate camera.
+     */
     @IBAction func takePhoto(_ sender: Any) {
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
@@ -121,15 +130,24 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         present(imagePicker, animated: true, completion: nil)
     }
     
+    
+    /*
+     * Handle camera and camera url.
+     */
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
+        //Show this photo in ImageView
         photoView.image = info[.originalImage] as? UIImage
         
+        //Set fileUrl for Receipt entry.
         if let fileUrl = info[.imageURL] as? URL{
             photoFileName = fileUrl.absoluteString
         }
     }
     
+    /*
+     * Handle done button by checking input and sending info to database.
+     */
     @IBAction func doneButtonPressed(_ sender: Any) {
         
         if (!nameTextField.hasText || !descriptionTextField.hasText){
@@ -141,8 +159,6 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         }
         else{
         //Save name, description, and location.
-        //entryName = nameTextField.text!
-        //entryDescription = descriptionTextField.text!
         newReceipt = Receipt()
         newReceipt.entryName = nameTextField.text!
         newReceipt.entryDescription = descriptionTextField.text!
@@ -150,7 +166,6 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         //  The following series of optional lets are simply just in case
         //  the user doesn't set location or choose image.
         
-        //  Why are we allowing them to add an entry without an accommpanied image?
             
         // Checks if location set.
         if let lat = latitude{
@@ -188,6 +203,9 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         }
     }
     
+    /*
+     * Allows photos to be selected from the device's gallery.
+     */
     @IBAction func chooseFromGalleryButtonPressed(_ sender: Any) {
         imagePicker =  UIImagePickerController()
         imagePicker.delegate = self
@@ -199,16 +217,10 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
             doneButton.isEnabled = true
         }
     }
+  
     /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
+     * Check for valid input for receipt entries.
      */
-    
     @IBAction func checkValidEntry(_ sender: Any) {
         if (nameTextField.hasText && descriptionTextField.hasText){
             doneButton.isEnabled = true

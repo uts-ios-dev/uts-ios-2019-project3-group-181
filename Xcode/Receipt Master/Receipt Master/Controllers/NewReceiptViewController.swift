@@ -16,6 +16,7 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var doneButton: UIButton!
     
     var newReceipt : Receipt!
     var realm : Realm!
@@ -42,6 +43,7 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         
         print(Realm.Configuration.defaultConfiguration.fileURL!)
@@ -130,6 +132,14 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
     
     @IBAction func doneButtonPressed(_ sender: Any) {
         
+        if (!nameTextField.hasText || !descriptionTextField.hasText){
+            let alert = UIAlertController(title: "Incomplete Fields", message: "Name and Description of Receipt is required.", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            self.present(alert, animated: true, completion: nil)
+        }
+        else{
         //Save name, description, and location.
         //entryName = nameTextField.text!
         //entryDescription = descriptionTextField.text!
@@ -137,10 +147,12 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         newReceipt.entryName = nameTextField.text!
         newReceipt.entryDescription = descriptionTextField.text!
         
+        // Checks if location set.
         if let lat = latitude{
             newReceipt.latitude = lat
         }
         
+        //  Checks if location set.
         if let long = longitude{
             newReceipt.longitude = long
         }
@@ -165,6 +177,7 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         }
         
         self.dismiss(animated: true, completion: nil)
+        }
     }
     
     @IBAction func chooseFromGalleryButtonPressed(_ sender: Any) {
@@ -173,6 +186,10 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         imagePicker.sourceType = .photoLibrary
         
         present(imagePicker, animated: true, completion: nil)
+        
+        if (nameTextField.hasText && descriptionTextField.hasText){
+            doneButton.isEnabled = true
+        }
     }
     /*
      // MARK: - Navigation
@@ -184,5 +201,10 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
      }
      */
     
+    @IBAction func checkValidEntry(_ sender: Any) {
+        if (nameTextField.hasText && descriptionTextField.hasText){
+            doneButton.isEnabled = true
+        }
+    }
 }
 

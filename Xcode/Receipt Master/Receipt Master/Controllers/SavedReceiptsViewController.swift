@@ -42,7 +42,11 @@ class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if receipts != nil{
         return receipts.count
+        }
+        
+        return 0
         //P.s. Read up on how to use UITableView. Cheers.
     }
     
@@ -92,6 +96,7 @@ class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITabl
         mapView.removeAnnotations(mapView.annotations)
         
         // Create annotations for each coordinate/entry.
+        if let receipts = receipts{
         for receipt in receipts {
             let coord = CLLocationCoordinate2D(
                 latitude: receipt.latitude,
@@ -103,6 +108,7 @@ class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITabl
             receiptAnnotation.coordinate = coord
             
             mapView.addAnnotation(receiptAnnotation)
+            }
         }
     }
     

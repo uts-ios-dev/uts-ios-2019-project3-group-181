@@ -61,6 +61,14 @@
                                                             <segue destination="4Kf-em-rMH" kind="show" id="ath-3v-mqg"/>
                                                         </connections>
                                                     </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gE7-t9-z4P">
+                                                        <rect key="frame" x="146" y="791" width="122" height="62"/>
+                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                        <state key="normal" title="Refresh Database"/>
+                                                        <connections>
+                                                            <action selector="resetDatabaseButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z5j-c7-1W6"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="cOC-TU-Tog" firstAttribute="top" secondItem="uAd-ho-vG3" secondAttribute="top" constant="60" id="5aE-Hn-kcP"/>

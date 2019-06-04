@@ -51,11 +51,12 @@ class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITabl
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellReuseIdentifier")!    //  Reusabe cell from UI.
         
-        let text = receipts[indexPath.row]
+        let receipt = receipts[indexPath.row]
         
-        cell.textLabel?.text = text.entryName
+        //  Set the display to name and desciprion, or whatever we wish to display.
+        cell.textLabel?.text = receipt.entryName + " - " + receipt.entryDescription
         
         return cell
         

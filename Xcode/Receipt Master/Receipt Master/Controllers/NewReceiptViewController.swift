@@ -45,7 +45,7 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         super.viewDidLoad()
         
         
-        
+        //  This just prints the location of the file to debug terminal so we can find the database file.
         print(Realm.Configuration.defaultConfiguration.fileURL!)
     }
     
@@ -147,6 +147,11 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         newReceipt.entryName = nameTextField.text!
         newReceipt.entryDescription = descriptionTextField.text!
         
+        //  The following series of optional lets are simply just in case
+        //  the user doesn't set location or choose image.
+        
+        //  Why are we allowing them to add an entry without an accommpanied image?
+            
         // Checks if location set.
         if let lat = latitude{
             newReceipt.latitude = lat
@@ -165,6 +170,9 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
             newReceipt.imageLocation = photoFileName
         }
         
+        //  Currently no errors have been detected - however will be printed here.
+        //  Documentation says errors are rare unless resources constrained - and these will happen when
+        //  you first create/open the realm file
         do {
             realm = try Realm()
             

@@ -15,7 +15,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-    
+    //  The following code snippets are just for debug purpose
+    //  and allow us to clear the Realm database file from the device.
     @IBAction func resetDatabaseButtonPressed(_ sender: Any) {
         print("Cleaning database")
         do {

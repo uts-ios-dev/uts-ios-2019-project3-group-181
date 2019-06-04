@@ -19,8 +19,6 @@
 		3D9A9726228EC55F0076AEDD /* NewReceiptViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9A9725228EC55F0076AEDD /* NewReceiptViewController.swift */; };
 		3D9A9728228EC5750076AEDD /* SavedReceiptsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9A9727228EC5750076AEDD /* SavedReceiptsViewController.swift */; };
 		A2F13463229981B0001E77C2 /* Receipt.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F13462229981B0001E77C2 /* Receipt.swift */; };
-		A2F13465229982DF001E77C2 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F13464229982DF001E77C2 /* Store.swift */; };
-		A2F13467229982EF001E77C2 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2F13466229982EF001E77C2 /* Category.swift */; };
 		D24A42D40AE4A4D90476FAE8 /* Pods_Receipt_Master.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E9009BABBABE44D91ABD456 /* Pods_Receipt_Master.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,8 +60,6 @@
 		6BA5BFB2040E89111245F86B /* Pods-Receipt Master.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Receipt Master.debug.xcconfig"; path = "Target Support Files/Pods-Receipt Master/Pods-Receipt Master.debug.xcconfig"; sourceTree = "<group>"; };
 		9E9009BABBABE44D91ABD456 /* Pods_Receipt_Master.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Receipt_Master.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2F13462229981B0001E77C2 /* Receipt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Receipt.swift; sourceTree = "<group>"; };
-		A2F13464229982DF001E77C2 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
-		A2F13466229982EF001E77C2 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		CDBDC077A93DC38AC667A02F /* Pods-Receipt Master.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Receipt Master.release.xcconfig"; path = "Target Support Files/Pods-Receipt Master/Pods-Receipt Master.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -118,19 +114,15 @@
 		3D9A96F1228EBFEA0076AEDD /* Receipt Master */ = {
 			isa = PBXGroup;
 			children = (
+				A29D3D0422A5672700DCE6A1 /* Controllers */,
+				A29D3D0322A5671C00DCE6A1 /* Models */,
 				3D9A9723228EC0130076AEDD /* background.jpg */,
 				3D9A96F2228EBFEA0076AEDD /* AppDelegate.swift */,
-				3D9A96F4228EBFEA0076AEDD /* ViewController.swift */,
 				3D9A96F6228EBFEA0076AEDD /* Main.storyboard */,
 				3D9A96FC228EBFEB0076AEDD /* Assets.xcassets */,
 				3D9A96FE228EBFEB0076AEDD /* LaunchScreen.storyboard */,
 				3D9A9701228EBFEB0076AEDD /* Info.plist */,
 				3D9A96F9228EBFEA0076AEDD /* Receipt_Master.xcdatamodeld */,
-				3D9A9725228EC55F0076AEDD /* NewReceiptViewController.swift */,
-				3D9A9727228EC5750076AEDD /* SavedReceiptsViewController.swift */,
-				A2F13462229981B0001E77C2 /* Receipt.swift */,
-				A2F13464229982DF001E77C2 /* Store.swift */,
-				A2F13466229982EF001E77C2 /* Category.swift */,
 			);
 			path = "Receipt Master";
 			sourceTree = "<group>";
@@ -151,6 +143,24 @@
 				3D9A9717228EBFEB0076AEDD /* Info.plist */,
 			);
 			path = "Receipt MasterUITests";
+			sourceTree = "<group>";
+		};
+		A29D3D0322A5671C00DCE6A1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A2F13462229981B0001E77C2 /* Receipt.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A29D3D0422A5672700DCE6A1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				3D9A96F4228EBFEA0076AEDD /* ViewController.swift */,
+				3D9A9725228EC55F0076AEDD /* NewReceiptViewController.swift */,
+				3D9A9727228EC5750076AEDD /* SavedReceiptsViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		B32BCF9499B7F83B684D24FB /* Pods */ = {
@@ -347,14 +357,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A2F13465229982DF001E77C2 /* Store.swift in Sources */,
 				A2F13463229981B0001E77C2 /* Receipt.swift in Sources */,
 				3D9A9728228EC5750076AEDD /* SavedReceiptsViewController.swift in Sources */,
 				3D9A96FB228EBFEA0076AEDD /* Receipt_Master.xcdatamodeld in Sources */,
 				3D9A96F5228EBFEA0076AEDD /* ViewController.swift in Sources */,
 				3D9A9726228EC55F0076AEDD /* NewReceiptViewController.swift in Sources */,
 				3D9A96F3228EBFEA0076AEDD /* AppDelegate.swift in Sources */,
-				A2F13467229982EF001E77C2 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

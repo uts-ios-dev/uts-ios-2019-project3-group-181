@@ -28,11 +28,10 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
     
     
     //Fields to store entry info.
-    var currentLocation:String?
-    var entryName:String?
-    var entryDescription:String?
     var longitude:Double?
     var latitude:Double?
+    
+    var photoFileName: String?
     
     var streetNum: String?
     var streetName: String?
@@ -123,6 +122,10 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         imagePicker.dismiss(animated: true, completion: nil)
         photoView.image = info[.originalImage] as? UIImage
+        
+        if let fileUrl = info[.imageURL] as? URL{
+            photoFileName = fileUrl.absoluteString
+        }
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
@@ -133,10 +136,22 @@ class NewReceiptViewController: UIViewController, CLLocationManagerDelegate, UIN
         newReceipt = Receipt()
         newReceipt.entryName = nameTextField.text!
         newReceipt.entryDescription = descriptionTextField.text!
-        newReceipt.latitude = latitude!
-        newReceipt.longitude = longitude!
         
-        #warning("Still need to handle latitude and longitude.")
+        if let lat = latitude{
+            newReceipt.latitude = lat
+        }
+        
+        if let long = longitude{
+            newReceipt.longitude = long
+        }
+        
+        if let locationName = self.locationLabel.text{
+            newReceipt.locationName = locationName
+        }
+        
+        if let photoFileName = photoFileName{
+            newReceipt.imageLocation = photoFileName
+        }
         
         do {
             realm = try Realm()

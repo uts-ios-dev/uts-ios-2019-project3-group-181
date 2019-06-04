@@ -17,7 +17,9 @@ class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITabl
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
-    
+    var imageLocation = ""
+    var name = ""
+    var desc = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,24 +59,27 @@ class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        Stack Overflow- UIImage Alert View
-        let alert = UIAlertController(title: receipts[indexPath.row].entryName, message: receipts[indexPath.row].entryDescription, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-//        let imgTitle = UIImage(named:"imgTitle.png")
-//        let imgViewTitle = UIImageView(frame: CGRect(x: 10, y: 10, width: 30, height: 30))
-//        imgViewTitle.image = imgTitle
-//        alert.view.addSubview(imgViewTitle)
-        alert.addAction(action)
-        
-        self.present(alert, animated: true, completion: nil)
+        self.imageLocation = receipts[indexPath.row].imageLocation
+        self.name = receipts[indexPath.row].entryName
+        self.desc = receipts[indexPath.row].entryDescription
+        //Save stuff to pass on
+        self.performSegue(withIdentifier: "toImg", sender: self)
+        let coordinate = CLLocationCoordinate2D.init(latitude: receipts[indexPath.row].latitude, longitude: receipts[indexPath.row].longitude)
+        mapView.setCenter(coordinate, animated: true)
     }
     
-//    func numberOfSections(in tableView: UITableView) -> Int {
-//        return 1
-//
-//        #warning("Do we want to use sections?")
-//        Nah
-//    }
+    
+    
+    //Prepare for segue
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "toImg") {
+            let vc = segue.destination as! ImageViewViewController
+            vc.filePath = self.imageLocation
+            vc.name = self.name
+            vc.desc = self.desc
+        }
+    }
+    
     
     //==============Map stuff========================
     // Map code adapted from tutorial on: https://www.hackingwithswift.com/example-code/location/how-to-add-annotations-to-mkmapview-using-mkpointannotation-and-mkpinannotationview

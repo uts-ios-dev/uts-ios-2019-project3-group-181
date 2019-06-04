@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3D4425D822A6C7AF000EFBF1 /* ImageViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D4425D722A6C7AF000EFBF1 /* ImageViewViewController.swift */; };
 		3D9A96F3228EBFEA0076AEDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9A96F2228EBFEA0076AEDD /* AppDelegate.swift */; };
 		3D9A96F5228EBFEA0076AEDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D9A96F4228EBFEA0076AEDD /* ViewController.swift */; };
 		3D9A96F8228EBFEA0076AEDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D9A96F6228EBFEA0076AEDD /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3D4425D722A6C7AF000EFBF1 /* ImageViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewViewController.swift; sourceTree = "<group>"; };
 		3D9A96EF228EBFEA0076AEDD /* Receipt Master.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Receipt Master.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D9A96F2228EBFEA0076AEDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3D9A96F4228EBFEA0076AEDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				3D9A96F4228EBFEA0076AEDD /* ViewController.swift */,
 				3D9A9725228EC55F0076AEDD /* NewReceiptViewController.swift */,
 				3D9A9727228EC5750076AEDD /* SavedReceiptsViewController.swift */,
+				3D4425D722A6C7AF000EFBF1 /* ImageViewViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -362,6 +365,7 @@
 				3D9A96FB228EBFEA0076AEDD /* Receipt_Master.xcdatamodeld in Sources */,
 				3D9A96F5228EBFEA0076AEDD /* ViewController.swift in Sources */,
 				3D9A9726228EC55F0076AEDD /* NewReceiptViewController.swift in Sources */,
+				3D4425D822A6C7AF000EFBF1 /* ImageViewViewController.swift in Sources */,
 				3D9A96F3228EBFEA0076AEDD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

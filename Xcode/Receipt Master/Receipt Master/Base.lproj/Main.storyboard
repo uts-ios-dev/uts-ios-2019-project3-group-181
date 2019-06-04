@@ -166,11 +166,84 @@
                     </view>
                     <connections>
                         <outlet property="mapView" destination="FxO-td-Bhw" id="6Kl-pe-iTR"/>
+                        <segue destination="8IS-Mq-a3f" kind="show" identifier="toImg" id="6gs-dq-eIO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QkL-4s-cba" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="985.50724637681162" y="437.94642857142856"/>
+        </scene>
+        <!--Image View View Controller-->
+        <scene sceneID="VO1-WU-1pV">
+            <objects>
+                <viewController id="8IS-Mq-a3f" customClass="ImageViewViewController" customModule="Receipt_Master" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="bqy-qT-UfN">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved Receipts" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktA-XP-pkL">
+                                <rect key="frame" x="10.5" y="104" width="393" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="PWV-il-hXG">
+                                <rect key="frame" x="20" y="186" width="374" height="504"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="374" id="WGp-In-dYM"/>
+                                    <constraint firstAttribute="height" constant="504" id="ukU-0a-JIQ"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pWp-H6-pr4">
+                                <rect key="frame" x="20" y="698" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tf2-Pp-ocl">
+                                <rect key="frame" x="20" y="727" width="374" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vr4-8Y-jId">
+                                <rect key="frame" x="161" y="794" width="92" height="68"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <action selector="dismissV:" destination="8IS-Mq-a3f" eventType="touchUpInside" id="Eop-bZ-96K"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ktA-XP-pkL" firstAttribute="top" secondItem="pUm-em-gzP" secondAttribute="top" constant="60" id="0zR-Z2-h3n"/>
+                            <constraint firstItem="pUm-em-gzP" firstAttribute="trailing" secondItem="PWV-il-hXG" secondAttribute="trailing" constant="20" id="7GK-wG-4UG"/>
+                            <constraint firstItem="Tf2-Pp-ocl" firstAttribute="top" secondItem="pWp-H6-pr4" secondAttribute="bottom" constant="8" id="CYu-UK-X8H"/>
+                            <constraint firstItem="pWp-H6-pr4" firstAttribute="top" secondItem="PWV-il-hXG" secondAttribute="bottom" constant="8" id="IXh-zl-XpP"/>
+                            <constraint firstItem="PWV-il-hXG" firstAttribute="top" secondItem="ktA-XP-pkL" secondAttribute="bottom" constant="10" id="UNw-Xb-v6U"/>
+                            <constraint firstItem="ktA-XP-pkL" firstAttribute="centerX" secondItem="bqy-qT-UfN" secondAttribute="centerX" id="cqM-Vq-Gho"/>
+                            <constraint firstItem="Tf2-Pp-ocl" firstAttribute="leading" secondItem="pUm-em-gzP" secondAttribute="leading" constant="20" id="daT-zc-oIE"/>
+                            <constraint firstItem="vr4-8Y-jId" firstAttribute="centerX" secondItem="bqy-qT-UfN" secondAttribute="centerX" id="fZf-f0-qZ6"/>
+                            <constraint firstItem="pWp-H6-pr4" firstAttribute="top" secondItem="PWV-il-hXG" secondAttribute="bottom" constant="8" id="lNf-wv-dwB"/>
+                            <constraint firstItem="pWp-H6-pr4" firstAttribute="leading" secondItem="pUm-em-gzP" secondAttribute="leading" constant="20" id="lra-0P-CEU"/>
+                            <constraint firstItem="pUm-em-gzP" firstAttribute="trailing" secondItem="Tf2-Pp-ocl" secondAttribute="trailing" constant="20" id="ngI-WS-qbZ"/>
+                            <constraint firstItem="pUm-em-gzP" firstAttribute="trailing" secondItem="pWp-H6-pr4" secondAttribute="trailing" constant="20" id="uIo-ES-1wQ"/>
+                            <constraint firstItem="vr4-8Y-jId" firstAttribute="bottom" secondItem="pUm-em-gzP" secondAttribute="bottom" id="vAi-tH-V7g"/>
+                            <constraint firstItem="PWV-il-hXG" firstAttribute="leading" secondItem="pUm-em-gzP" secondAttribute="leading" constant="20" id="x4K-ix-1FJ"/>
+                            <constraint firstItem="vr4-8Y-jId" firstAttribute="top" secondItem="Tf2-Pp-ocl" secondAttribute="bottom" constant="46" id="xX0-sX-ChS"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="pUm-em-gzP"/>
+                    </view>
+                    <connections>
+                        <outlet property="descLbl" destination="Tf2-Pp-ocl" id="vca-Xt-q6N"/>
+                        <outlet property="imageView" destination="PWV-il-hXG" id="bxF-yl-sqV"/>
+                        <outlet property="nameLbl" destination="pWp-H6-pr4" id="BVV-YQ-fyh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CV2-Sj-g1T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1813.0434782608697" y="448.66071428571428"/>
         </scene>
         <!--New Receipt View Controller-->
         <scene sceneID="iWS-Sc-ToA">

@@ -266,6 +266,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="checkValidEntry:" destination="L2a-yI-JQx" eventType="editingDidEnd" id="aBy-UN-jj7"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Receipt" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="crT-84-zAG">
                                 <rect key="frame" x="46" y="104" width="322" height="72"/>
@@ -273,8 +276,11 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Bf-KT-xer">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Bf-KT-xer">
                                 <rect key="frame" x="161" y="767" width="92" height="60"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
                                 <fontDescription key="fontDescription" type="system" pointSize="40"/>
                                 <state key="normal" title="Done"/>
                                 <connections>
@@ -287,6 +293,9 @@
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="checkValidEntry:" destination="L2a-yI-JQx" eventType="valueChanged" id="mKd-jZ-I3z"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enable to include current location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TIE-iH-FVH">
                                 <rect key="frame" x="20" y="738" width="374" height="21"/>
@@ -352,6 +361,7 @@
                     </view>
                     <connections>
                         <outlet property="descriptionTextField" destination="KD6-wd-vMb" id="UD8-uC-lFB"/>
+                        <outlet property="doneButton" destination="4Bf-KT-xer" id="MXp-Ij-gjw"/>
                         <outlet property="locationLabel" destination="TIE-iH-FVH" id="oQS-hB-eh1"/>
                         <outlet property="nameTextField" destination="zft-83-zaY" id="fVc-z1-hOQ"/>
                         <outlet property="photoView" destination="uI7-c7-KJF" id="hKE-ba-sc7"/>

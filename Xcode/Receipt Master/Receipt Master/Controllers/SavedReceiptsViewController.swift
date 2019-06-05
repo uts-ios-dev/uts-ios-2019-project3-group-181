@@ -24,6 +24,7 @@ class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITabl
     var imageLocation = ""
     var name = ""
     var desc = ""
+    var date = ""
     
     
     override func viewDidLoad() {
@@ -77,6 +78,7 @@ class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITabl
         self.imageLocation = receipts[indexPath.row].imageLocation
         self.name = receipts[indexPath.row].entryName
         self.desc = receipts[indexPath.row].entryDescription
+        self.date = receipts[indexPath.row].creationDate.description
         
         //Save values to pass on
         self.performSegue(withIdentifier: "toImg", sender: self)
@@ -93,6 +95,7 @@ class SavedReceiptsViewController: UIViewController, UITableViewDelegate, UITabl
             vc.filePath = self.imageLocation
             vc.name = self.name
             vc.desc = self.desc
+            vc.creationDate = self.date
         }
     }
     

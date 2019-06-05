@@ -222,6 +222,13 @@
                                     <action selector="dismissV:" destination="8IS-Mq-a3f" eventType="touchUpInside" id="Eop-bZ-96K"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date Lbl" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xjq-D2-AhA">
+                                <rect key="frame" x="20" y="756" width="374" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -244,6 +251,7 @@
                         <viewLayoutGuide key="safeArea" id="pUm-em-gzP"/>
                     </view>
                     <connections>
+                        <outlet property="dateLabel" destination="xjq-D2-AhA" id="okk-f9-0G0"/>
                         <outlet property="descLbl" destination="Tf2-Pp-ocl" id="vca-Xt-q6N"/>
                         <outlet property="imageView" destination="PWV-il-hXG" id="bxF-yl-sqV"/>
                         <outlet property="nameLbl" destination="pWp-H6-pr4" id="BVV-YQ-fyh"/>

@@ -18,12 +18,14 @@ class ImageViewViewController: UIViewController {
     var filePath:String = ""
     var name:String = ""
     var desc:String = ""
+    var creationDate:String = ""
     
     // UI Labels
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet var imageView: UIImageView!
     
+    @IBOutlet weak var dateLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +38,7 @@ class ImageViewViewController: UIViewController {
         self.imageView.image = img
         self.nameLbl.text = self.name
         self.descLbl.text = self.desc
-        
+        self.dateLabel.text = self.creationDate
 
     }
     override func viewDidAppear(_ animated: Bool) {

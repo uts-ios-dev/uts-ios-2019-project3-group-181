@@ -24,6 +24,7 @@ class ImageViewViewController: UIViewController {
     @IBOutlet weak var descLbl: UILabel!
     @IBOutlet weak var nameLbl: UILabel!
     @IBOutlet var imageView: UIImageView!
+    @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var dateLabel: UILabel!
     
@@ -36,6 +37,7 @@ class ImageViewViewController: UIViewController {
         
         //Set the UI Components with values to display tothe user.
         self.imageView.image = img
+        self.titleLbl.text = self.name
         self.nameLbl.text = self.name
         self.descLbl.text = self.desc
         self.dateLabel.text = self.creationDate
